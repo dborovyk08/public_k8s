@@ -4,9 +4,8 @@ https://devopscube.com/setup-kubernetes-cluster-kubeadm/
 
 Quick main steps:
 
-=====================================================
 Prepared Vagrant file
-=====================================================
+----------------------
 
 Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: <<-SHELL
@@ -41,9 +40,9 @@ Vagrant.configure("2") do |config|
     end
   end
 
-==================================================
+
 Run Virtual Machines
-==================================================
+---------------------
 
 just run the vagrant command from inside the folder
 Be sure you have vagrant from Hashicorp installed
@@ -51,9 +50,9 @@ Be sure you have vagrant from Hashicorp installed
 vagrant up
 
 
-==================================================
+
 Install Docker Container Runtime On All The Nodes
-==================================================
+--------------------------------------------------
 
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
@@ -97,9 +96,9 @@ sudo systemctl enable docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
-==========================================
+
 Install Kubeadm & Kubelet & Kubectl on all Nodes
-==========================================
+--------------------------------------------------
 
 Install the required dependencies.
 
@@ -118,9 +117,9 @@ Add hold to the packages to prevent upgrades.
 
 sudo apt-mark hold kubelet kubeadm kubectl
 
-=================================================
+
 Initialize Kubeadm On Master Node To Setup Control Plane
-=================================================
+---------------------------------------------------------
 
 First, set two environment variables. Replace 10.0.0.10 with the IP of your master node.
 
@@ -139,23 +138,22 @@ Now, verify the kubeconfig by executing the following kubectl command to list al
 
 kubectl get po -n kube-system
 
-==========================================
+
 Install Calico Network Plugin for Pod Networking
-==========================================
+-------------------------------------------------
 
 Execute the following command to install the calico network plugin on the cluster.
 
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
-===========================================
 Join Worker Nodes To Kubernetes Master Node
-===========================================
+--------------------------------------------
 
 kubeadm token create --print-join-command
 
-=============================================
+
 Setup Kubernetes Metrics Server
-=============================================
+--------------------------------
 
 To install the metrics server, execute the following metric server manifest file. It deploys metrics server version v0.4.4
 
