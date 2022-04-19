@@ -1,6 +1,11 @@
+This project is providing a guidance on how to quickly deploy kubernetes cluster for your own non-production needs: demo or lab env.
 
-Full guide 
-https://devopscube.com/setup-kubernetes-cluster-kubeadm/
+prerequisites:
+- vagrant
+
+To install vagrant, please visit 
+https://learn.hashicorp.com/tutorials/vagrant/getting-started-install?in=vagrant/getting-started
+
 
 Quick main steps:
 
@@ -46,8 +51,8 @@ Vagrant.configure("2") do |config|
 Run Virtual Machines
 ---------------------
 
-just run the vagrant command from inside the folder
-Be sure you have vagrant from Hashicorp installed
+just run the vagrant command from inside the folder. Be sure you have vagrant from Hashicorp installed
+
 ```
 vagrant up
 ```
