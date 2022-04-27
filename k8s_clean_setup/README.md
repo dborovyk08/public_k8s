@@ -203,3 +203,5 @@ now this should work
 ```
 kubectl top nodes
 ```
+
+***_NOTE_*** If you build multi-master-nodes / redundant control plane cluster, you need to use a high available yaml version, e.g. `https://github.com/kubernetes-sigs/metrics-server/releases/download/metrics-server-helm-chart-3.8.2/high-availability.yaml`
